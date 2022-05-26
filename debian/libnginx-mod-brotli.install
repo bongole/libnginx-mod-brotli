@@ -1,4 +1,4 @@
-objs/ngx_http_brotli_filter_module.so usr/share/nginx/modules
-objs/ngx_http_brotli_static_module.so usr/share/nginx/modules
+objs/ngx_http_brotli_filter_module.so usr/lib/nginx/modules
+objs/ngx_http_brotli_static_module.so usr/lib/nginx/modules
 debian/brotli.conf etc/nginx/conf.d
 debian/mod-http-brotli.conf usr/share/nginx/modules-available
