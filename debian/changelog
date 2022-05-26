@@ -2,5 +2,4 @@ libnginx-mod-brotli (1.0.9+nginx-1.18.0-1~jammy) jammy; urgency=medium
 
   * Follow ubuntu official nginx package
 
- -- bongole <bongole2@gmail.com>  Thu May 26 08:58:18 UTC 2022
-
+ -- bongole <bongole2@gmail.com>  Thu, 26 May 2022 18:21:06 +0900
