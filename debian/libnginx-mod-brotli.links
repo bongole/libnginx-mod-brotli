@@ -1,0 +1,1 @@
+etc/nginx/modules-available/mod-http-brotli.conf etc/nginx/modules-enabled/50-mod-http-brotli.conf

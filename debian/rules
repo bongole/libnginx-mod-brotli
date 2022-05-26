@@ -9,15 +9,10 @@ clean:
 	dh_testdir
 	dh_testroot
 	dh_clean
-	rm -f $(CURDIR)/objs
+	rm -rf $(CURDIR)/objs
 
 override_dh_auto_configure:
-	./configure --add-dynamic-module=../ngx_brotli --with-compat ${PS_NGX_EXTRA_FLAGS}
+	./configure --add-dynamic-module=../ngx_brotli --with-compat
 
 override_dh_auto_build:
 	make modules
-
-override_dh_auto_install:
-	mkdir -p etc/nginx/modules
-	cp objs/ngx_http_brotli_static_module.so etc/nginx/modules
-	cp objs/ngx_http_brotli_filter_module.so etc/nginx/modules
