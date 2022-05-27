@@ -17,7 +17,6 @@ RUN mkdir -p /tmp/build \
 COPY ./debian /tmp/build/debian
 
 RUN cd /tmp/build \
-    && ls -l \
     && git clone --depth 1 https://github.com/google/ngx_brotli.git \
     && cd ngx_brotli \
     && git submodule update --init --depth 1 \
