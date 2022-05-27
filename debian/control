@@ -1,4 +1,4 @@
-Source: libnginx-mod-brotli
+Source: libnginx-mod-http-brotli
 Section: httpd
 Priority: optional
 Maintainer: bongole <bongole2@gmail.com>
@@ -12,7 +12,7 @@ Build-Depends: debhelper (>= 9~),
 Standards-Version: 3.9.8.0
 Homepage: https://github.com/google/brotli
 
-Package: libnginx-mod-brotli
+Package: libnginx-mod-http-brotli
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Brotli is a generic-purpose lossless compression algorithm 

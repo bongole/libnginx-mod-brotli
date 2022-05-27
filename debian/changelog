@@ -1,4 +1,4 @@
-libnginx-mod-brotli (1.0.9+nginx-1.18.0-1~jammy) jammy; urgency=medium
+libnginx-mod-http-brotli (1.0.9+nginx-1.18.0-1~jammy) jammy; urgency=medium
 
   * Follow ubuntu official nginx package
 
