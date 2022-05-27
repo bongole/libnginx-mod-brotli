@@ -3,22 +3,29 @@ FROM ubuntu:22.04
 ARG NGINX_VERSION=1.18.0
 
 RUN sed -i -e 's/# deb-src/deb-src/g' /etc/apt/sources.list
-RUN apt-get update \
-    && apt-get install -y ca-certificates build-essential dpkg-dev git lsb-release --no-install-recommends
 
-RUN cd /tmp \
-    && mkdir build \
-    && cd build \
-    && git clone -b follow-ubuntu-official --depth 1 https://github.com/bongole/libnginx-mod-brotli.git \
+RUN mkdir /pkg
+
+RUN mkdir -p /tmp/build \
+    && cd /tmp/build \
+    && apt-get update \
+    && apt-get install -y ca-certificates build-essential dpkg-dev git lsb-release --no-install-recommends \
+    && apt-get source nginx \
+    && apt-get build-dep -y nginx --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY ./debian /tmp/build/debian
+
+RUN cd /tmp/build \
+    && ls -l \
     && git clone --depth 1 https://github.com/google/ngx_brotli.git \
     && cd ngx_brotli \
     && git submodule update --init --depth 1 \
     && cd .. \
-    && apt-get source nginx \
-    && apt-get build-dep -y nginx --no-install-recommends \
     && cd nginx-${NGINX_VERSION} \
-    && dpkg-checkbuilddeps \
     && dpkg-buildpackage -S \
     && rm -rf debian \
-    && cp -r ../libnginx-mod-brotli/debian . \
-    && dpkg-buildpackage
+    && cp -r ../debian . \
+    && dpkg-buildpackage \
+    && cp ../*.deb /pkg \
+    && rm -rf /tmp/*
